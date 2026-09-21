@@ -1,7 +1,8 @@
--- Jobsheet 8: skema awal database simpus_mini (PostgreSQL)
+-- Jobsheet 8: skema awal database game_database (PostgreSQL)
 -- Jalankan setelah membuat database, misal:
---   createdb simpus_mini
---   psql -d simpus_mini -f sql/01_buku_anggota.sql
+--   createdb game_database
+--   psql -d game_database -f sql/database_kartu.sql
+-- (Bila tabel belum ada, aplikasi juga membuatnya otomatis saat pertama dibuka.)
 
 CREATE TABLE IF NOT EXISTS senjata (
     id SERIAL PRIMARY KEY,

@@ -3,8 +3,6 @@ $page_title = "Daftar Senjata";
 include __DIR__ . '/../includes/header.php';
 require __DIR__ . '/../includes/koneksi.php';
 
-$flash = $_SESSION['flash'] ?? null;
-unset($_SESSION['flash']);
 
 $daftarSenjata = $pdo->query("SELECT * FROM senjata ORDER BY id DESC")->fetchAll(PDO::FETCH_ASSOC);
 ?>
@@ -12,7 +10,7 @@ $daftarSenjata = $pdo->query("SELECT * FROM senjata ORDER BY id DESC")->fetchAll
             <h2>Daftar Senjata</h2>
 
             <?php if ($flash): ?>
-                <p class="flash flash-<?php echo $flash['type']; ?>"><?php echo $flash['pesan']; ?></p>
+                <p class="flash flash-<?php echo e($flash['type']); ?>"><?php echo e($flash['pesan']); ?></p>
             <?php endif; ?>
 
             <div class="search-box">
@@ -39,10 +37,10 @@ $daftarSenjata = $pdo->query("SELECT * FROM senjata ORDER BY id DESC")->fetchAll
                     <?php else: ?>
                         <?php foreach ($daftarSenjata as $senjata): ?>
                         <tr>
-                            <td><?php echo $senjata['nama']; ?></td>
-                            <td><?php echo $senjata['deskripsi']; ?></td>
-                            <td><?php echo $senjata['kerusakan']; ?></td>
-                            <td><?php echo $senjata['durabilitas']; ?></td>
+                            <td><?php echo e($senjata['nama']); ?></td>
+                            <td><?php echo e($senjata['deskripsi']); ?></td>
+                            <td><?php echo e($senjata['kerusakan']); ?></td>
+                            <td><?php echo e($senjata['durabilitas']); ?></td>
                             <td>
                                 <button type="button">Edit</button>
                                 <button type="button" class="btn-hapus">Hapus</button>
